@@ -100,16 +100,19 @@ YAHOO.namespace = function() {
     var a=arguments, o=null, i, j, d;
     for (i=0; i<a.length; i=i+1) {
         d=(""+a[i]).split(".");
-        o=YAHOO;
+        o=this;
 
         // YAHOO is implied, so it is ignored if it is included
+				// TODO: since now you can add subnamespace to namespace reference
+				// this check will probably be confising only
         for (j=(d[0] == "YAHOO") ? 1 : 0; j<d.length; j=j+1) {
             o[d[j]]=o[d[j]] || {};
             o=o[d[j]];
+						o.namespace = YAHOO.namespace;
         }
     }
 
-    return o;
+    return o; //XXX why only last is returned ?
 };
 
 /**
