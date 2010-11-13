@@ -1,3 +1,4 @@
 YUI enhancements:
 
-TODO
+* YAHOO.namespace
+	* every new namespace has a method to create subnamespace
